@@ -1,0 +1,26 @@
+{%extends "header.html"%}
+{%block title%}Create{%endblock%}
+{%block content%}
+	{% with messages = get_flashed_messages() %}
+	{% if messages %}
+		{%for message in messages%}
+			<p class="red"> {{message}} </p>
+		{%endfor%}
+	{%endif%}
+{%endwith%}
+
+	<form action="#" method="POST" enctype="multipart/form-data">
+		<input type="text" placeholder="project name" name="projName" required><br>
+		<input type="text" placeholder="short description" name="short_desc" required><br>
+		Icon: <input name="img" type="file" required><br>
+		<input type="text" placeholder="prgrming language" name="language" required><br>
+		<input type="text" placeholder="Website or access link!" name="site" required><br>
+		<textarea id="desc" name="desc" rows="10" cols="80" placeholder="Long Description" required></textarea>
+		
+		<br>
+		<br>
+
+		<input type="submit">
+	</form>
+
+{%endblock%}

@@ -1,0 +1,14 @@
+{%extends "header.html"%}
+{%block title%}User{%endblock%}
+{%block content%}
+<br>
+<h5>Hello, {{content["user"]}}</h5>
+<p>
+	<form action="/create">
+		<input type="submit" value="Create a project">
+	</form>
+	{% for project in content["projects"] %}
+		<a href="project/{{content["projects"][project]}}">{{project}} </a>(<a href="edit/{{content["projects"][project]}}">edit</a>) <br>
+	{%endfor%}
+</p>
+{%endblock%}

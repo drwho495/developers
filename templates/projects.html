@@ -1,0 +1,45 @@
+{%extends "header.html"%}
+{%block title%}Projects{%endblock%}
+{%block content%}
+{%if content[1] == ""%}
+	<h5> {{content[0]["name"]}} </h5>
+	<img src="{{content[0]["img"]}}" width="128" height="128"/>
+	<p>Short Description: {{content[0]["short_desc"]}}</p>
+	<p>Creator: {{content[0]["user"]}}</p>
+	<p> Views: {{content[0]["views"] + 1}} (you can't add views if your not signed up!)</p>
+	<p>Website: <a target="_blank" href="{{content[0]["website"]}}">{{content[0]["website"]}}</a></p>
+	<p id="long desc">Full Description:<br>{{content[0]["descripton"]}}</p>
+
+	<script>
+	var element = document.getElementById("long desc");
+			
+	element.innerHTML = element.innerHTML.split("\n").join("<br>");
+	</script>
+{%endif%}
+{%if content[1] != ""%}
+<h5><a href="/popular">Popular</a></h5>
+{%for project in content["popular"]%}
+{%if project["id"]%}
+<h5><a href="/project/{{project["id"]}}">{{project["name"]}}</a></h5>
+<img src="{{project["img"]}}" width="58" height="58"/>
+<p>Short Description: {{project["short_desc"]}}</p>
+<p>Creator: {{project["user"]}}</p>
+<p>Website: <a target="_blank" href="{{project["website"]}}">{{project["website"]}}</a></p>
+<p> Views: {{project["views"]}} </p>
+{%endif%}
+{%endfor%}
+<br>
+<br>
+<h5><a href="/newest">Newest</a></h5>
+{%for project in content["newest"]%}
+{%if project["id"]%}
+<h5><a href="/project/{{project["id"]}}">{{project["name"]}}</a></h5>
+<img src="{{project["img"]}}" width="58" height="58"/>
+<p>Short Description: {{project["short_desc"]}}</p>
+<p>Creator: {{project["user"]}}</p>
+<p>Website: <a target="_blank" href="{{project["website"]}}">{{project["website"]}}</a></p>
+<p> Views: {{project["views"]}} </p>
+{%endif%}
+{%endfor%}
+{%endif%}
+{%endblock%}

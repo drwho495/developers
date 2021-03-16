@@ -1,0 +1,14 @@
+{%extends "header.html"%}
+{%block title%}Projects{%endblock%}
+{%block content%}
+{%for project in content%}
+{%if project["id"]%}
+<h5><a href="/project/{{project["id"]}}">{{project["name"]}}</a></h5>
+<img src="{{project["img"]}}" width="58" height="58"/>
+<p>Short Description: {{project["short_desc"]}}</p>
+<p>Creator: {{project["user"]}}</p>
+<p>Website: <a target="_blank" href="{{project["website"]}}">{{project["website"]}}</a></p>
+<p> Views: {{project["views"]}} </p>
+{%endif%}
+{%endfor%}
+{%endblock%}

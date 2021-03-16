@@ -1,0 +1,17 @@
+{%extends "header.html"%}
+{%block title%}Admin{%endblock%}
+{%block content%}
+	{% with messages = get_flashed_messages() %}
+	{% if messages %}
+		{%for message in messages%}
+			<p class="red"> {{message}} </p>
+		{%endfor%}
+	{%endif%}
+{%endwith%}
+
+	<form action="#" method="POST">
+		<input type="text" placeholder="delete project" name="id"><br>
+		<input type="submit">
+	</form>
+
+{%endblock%}
